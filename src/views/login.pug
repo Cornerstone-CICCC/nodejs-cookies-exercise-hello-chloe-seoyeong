@@ -1,0 +1,12 @@
+extends layout/base
+
+block content
+  if errorMessage 
+    p(class="errorMessage")=errorMessage
+  form(action="/login" method="POST")
+    input(type="text" name="username" placeholder="Write Username")
+    input(type="password" name="password" placeholder="Write Password")
+    button(type="submit") Log In
+  div
+    span Don't have an account yet? 
+    a(href="/join") Join &rarr;
