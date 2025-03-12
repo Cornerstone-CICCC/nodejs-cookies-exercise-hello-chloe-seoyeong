@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const page_controllers_1 = require("../controllers/page.controllers");
+const auth_middleware_1 = require("../middlewares/auth.middleware");
+const pageRouter = (0, express_1.Router)();
+pageRouter.get("/", page_controllers_1.getHome);
+pageRouter.get("/login", page_controllers_1.getLogin);
+pageRouter.post("/login", page_controllers_1.postLogin);
+pageRouter.get("/join", page_controllers_1.getJoin);
+pageRouter.post("/join", page_controllers_1.postJoin);
+pageRouter.get("/users", auth_middleware_1.checkAuth, page_controllers_1.getUsers);
+pageRouter.get("/profile", auth_middleware_1.checkAuth, page_controllers_1.getProfile);
+pageRouter.get("/logout", page_controllers_1.getLogout);
+exports.default = pageRouter;
